@@ -1,14 +1,13 @@
-import chalk from 'chalk';
 import fs from 'fs/promises';
 
 const readFile = async (filePath) => {
     const data = await fs.readFile(filePath, 'utf-8');
-    const results = await extraiLink(data.toString());
+    const results = await extractLinks(data.toString());
 
     return results;
 }
 
-const extraiLink = async (text) => {
+const extractLinks = async (text) => {
     const regex = /\[([^\[\]]*?)\]\((https?:\/\/[^\s]*?)\)/gm;
     const caught = [...text.matchAll(regex)];
 

@@ -27,18 +27,12 @@ async function processText(data) {
     }
 }
 
-function print(data, fileName) {
-    fileName ?
-        console.log(
-            chalk.yellow('link list'),
-            chalk.black(chalk.bgGreen(fileName)),
-            data
-        )
-        :
-        console.log(
-            chalk.yellow('link list'),
-            data
-        );
+function print(data, fileName = '') {
+    console.log(
+        chalk.yellow('link list'),
+        chalk.black(chalk.bgGreen(fileName)),
+        data
+    )
 }
 
 processText(path)

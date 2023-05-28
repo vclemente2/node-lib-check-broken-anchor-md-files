@@ -1,5 +1,3 @@
-import chalk from 'chalk'
-
 function extractLinks(objectData) {
     return objectData.map((item) => Object.values(item).join());
 }
@@ -11,15 +9,19 @@ async function validatedList(linkList) {
                 const response = await fetch(link, { method: 'HEAD' });
                 return response.status;
             } catch (error) {
-                return 500
+                return errorHandling(error)
             }
         }))
 
     return result;
 }
 
-function errorHandling() {
-    console.log(chalk.red('deu erro'))
+function errorHandling(error) {
+    if (error.cause.code === 'ENOTFOUND') {
+        return 'Link não encontrado'
+    } else {
+        return 'Erro ao efetuar a requisição'
+    }
 }
 
 export default async function httpValidate(data) {

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cli": "node ./src/cli.js"
+    "cli": "node ./src/cli.js ./files",
+    "cli:validate": "node ./src/cli.js ./files --validate"
   },
   "repository": {
     "type": "git",
